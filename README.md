@@ -4,8 +4,13 @@ Protótipo de ERP para negócios locais: painel, clientes, produtos/estoque, ban
 com login por perfil e permissões configuráveis.
 
 ## Como rodar no VS Code
-1. Abra a pasta `gestaolocal-erp` no VS Code.
-2. Instale a extensão **Live Server** e clique em **Open with Live Server** no `index.html`.
+1. Instale Node.js 18+.
+2. Execute `npm install`.
+3. Execute `npm run dev` e abra a URL indicada pelo Vite.
+
+O projeto foi migrado para React + Vite + TypeScript. A aplicação mantém o armazenamento demonstrativo no
+`localStorage`, mas agora separa domínio, persistência, componentes e composição da interface em
+`src/`. O arquivo `js/app.js` é legado e não é mais carregado pelo navegador.
 
 ## Usuários padrão
 | Perfil        | Usuário       | Senha     | Acesso inicial                                   |
@@ -17,24 +22,59 @@ com login por perfil e permissões configuráveis.
 Troque as senhas em **Usuários** (o admin altera as dos funcionários; o dev altera todas).
 
 ## Acesso pelo celular
-- **Mesma rede Wi-Fi:** com o Live Server ligado, abra no celular `http://IP-DO-SEU-PC:5500`
+- **Mesma rede Wi-Fi:** com `npm run dev` ligado, abra no celular `http://IP-DO-SEU-PC:5173`
   (descubra o IP com `ipconfig` no Windows ou `ifconfig`/`ip a` no Linux/Mac).
 - **De qualquer lugar:** publique a pasta em um hospedeiro estático (Netlify, GitHub Pages, Vercel).
 - A tela se adapta ao celular: menu lateral recolhível e listas em formato de cartões.
 
 ## Estrutura
-- `index.html`  estrutura, incluindo a animação de entrada e a tela de login
-- `assets/rm-logo.svg`  símbolo R&M (fundo transparente), usado no cabeçalho e na animação
-- `css/style.css`  estilos, tema claro/escuro e regras para celular
-- `js/app.js`  dados demo, login, permissões, telas, formulários e dashboard
+- `index.html`  documento HTML mínimo que hospeda o root React
+- `assets/logo-mark.png`  símbolo R&M (fundo transparente), usado no cabeçalho e no favicon
+- `css/style.css`  estilos compartilhados, tema claro/escuro e regras para celular
+- `src/main.tsx`  ponto de entrada React
+- `src/App.tsx`  composição da aplicação, autenticação, shell e telas
+- `src/domain.ts`  entidades, permissões, dados iniciais e formatadores tipados
+- `src/storage.ts`  adaptador de persistência no navegador com APIs tipadas
+- `src/App.tsx`  menu lateral agrupado como na aplicação original (`Geral`, `Cadastros`,
+  `Fiscal / Documentos`, `Financeiro` e `Administração`)
+- `js/app.js`  implementação legada mantida apenas como referência histórica
+
+## Plano de migração React
+
+### Etapa 1 — Fundação (concluída)
+- Vite como ferramenta de desenvolvimento e build.
+- React 18 com `StrictMode`.
+- Entrada única em `src/main.tsx`.
+- Tipagem estrita (TypeScript/TSX) para domínio, persistência, anexos e interface.
+- `localStorage` e `sessionStorage` encapsulados em um adaptador.
+
+### Etapa 2 — Domínio e dados (concluída)
+- Entidades, perfis, permissões e seed isolados de componentes.
+- Operações de inclusão, alteração, exclusão e filtros realizadas por estado React.
+- Compatibilidade mantida com a chave `gestaolocal_db_v2`.
+
+### Etapa 3 — Interface (em andamento)
+- Login, dashboard, navegação por módulos, tabelas, formulários, tema e permissões migrados.
+- Filtros avançados de documentos e anexos locais (nome, tipo e tamanho) migrados.
+- Menu lateral fixo e recolhido por padrão, expandido ao passar o mouse ou receber foco,
+  preservando os grupos e a ordem da aplicação original.
+- O serviço de anexos mantém metadados localmente e deixa o ponto de integração com Google Drive
+  isolado em `src/services/documentAttachments.ts`.
+- Próximo incremento: extrair componentes visuais menores e conectar o serviço a OAuth/Google Drive.
+
+### Etapa 4 — Qualidade e produção (planejada)
+- Adicionar testes unitários de domínio e testes de fluxo com Playwright.
+- Migrar autenticação e persistência para API/backend antes de uso real.
+- Adicionar validação de schema, tratamento de erros persistentes e observabilidade.
+- Publicar o build Vite no GitHub Pages ou outro host estático.
 
 ## Importante: segurança
 Este projeto roda só no navegador. Usuários, senhas (com hash simples) e permissões ficam no `localStorage`
 de cada aparelho. Isso serve para demonstração e para validar o fluxo, **mas não protege dados de verdade**:
 quem abrir as ferramentas do navegador consegue alterar tudo, e cada celular/computador tem sua própria cópia dos dados.
 Para uso real com vários usuários, o próximo passo é um backend (API + banco de dados) que valide
-o login e as permissões no servidor. As funções `save()`, o carregamento de `db` e `attemptLogin()` em
-`js/app.js` são os pontos a trocar por chamadas à API.
+o login e as permissões no servidor. O adaptador `src/storage.ts` e o fluxo de login em `src/App.tsx`
+são os pontos de integração para substituir o armazenamento local por chamadas à API.
 
 
 ## Atualizações — R&M IT Solutions
@@ -43,7 +83,8 @@ o login e as permissões no servidor. As funções `save()`, o carregamento de `
 - Splash de entrada ampliada para aproximadamente 5 segundos.
 - Após 60 segundos sem interação, a tela entra em modo de espera com a marca **R&M IT Solutions**. Qualquer interação retorna ao sistema.
 - Identidade visual revisada: proporções mais consistentes, paleta azul/grafite neutra e tecnológica e abas com estados mais claros.
-- Novo vetor `assets/rm-logo.svg`, usado na tela de inatividade.
+- Logo R&M padronizado em `assets/logo-mark.png`, evitando o uso de um PNG com extensão SVG.
+- Menu lateral React com botão hambúrguer, expansão por mouse e foco de teclado.
 
 ### Documentos fiscais e anexos
 Foi incluído o módulo **Documentos fiscais** para registrar NF-e, NFS-e, NFC-e, recibos e comprovantes, com:
@@ -88,3 +129,36 @@ O módulo de Documentos fiscais possui filtros por número, chave de acesso, ent
 
 ### Identidade visual
 No modo claro, a interface utiliza uma paleta mais leve e o azul da marca R&M como cor de destaque. O modo escuro mantém sua configuração atual.
+
+
+## Melhorias de usabilidade e acessibilidade — versão revisada
+
+- Navegação por teclado com foco visível e links para pular diretamente ao conteúdo.
+- Campos de formulário associados corretamente aos respectivos rótulos e mensagens de erro anunciadas por leitores de tela.
+- Botão para mostrar/ocultar senha no acesso e orientação de navegação por teclado.
+- Menu lateral com estado aberto/fechado controlável por botão, especialmente no celular.
+- Listas adaptadas para leitura em telas pequenas, transformando registros em cartões sem perder os nomes dos campos.
+- Busca e filtros com rótulos claros e contador de resultados atualizado.
+- Ações de tabela identificadas de forma textual, além dos ícones.
+- Validação básica de campos, estoque e senha antes do salvamento.
+- Anexos limitados a formatos conhecidos e tamanho máximo de 10 MB.
+- Confirmação antes de restaurar dados de demonstração ou excluir registros.
+- Melhor feedback visual para salvamento, exclusão, filtros e erros.
+- Suporte a `prefers-reduced-motion` e `forced-colors` para usuários que reduzem animações ou usam alto contraste.
+- Correção de textos com caracteres corrompidos na interface.
+
+### Observação sobre dados
+
+A aplicação continua sendo um protótipo local. Essas melhorias não transformam o login em um mecanismo de segurança de produção: usuários, permissões e dados ainda ficam no navegador. Para uso comercial, a autenticação e autorização devem ser transferidas para um backend com banco de dados e sessões seguras.
+
+## Dados incorporados do backup
+
+A versão React mantém a interface atual e incorpora o conjunto de dados demonstrativo da versão de backup v2:
+- 6 clientes, incluindo telefone, e-mail e limite de crédito;
+- 8 produtos, incluindo custo, preço, estoque e estoque mínimo;
+- 3 contas bancárias com parâmetros adicionais;
+- 44 títulos financeiros gerados para o histórico demonstrativo;
+- 3 documentos fiscais/comprovantes com vínculo financeiro;
+- usuários e permissões dos três perfis.
+
+Na inicialização, `src/storage.ts` faz uma migração não destrutiva do `localStorage`: registros existentes são preservados e campos/registros que estavam somente no backup são incorporados. A tela e o estilo do login permanecem independentes dessa migração.

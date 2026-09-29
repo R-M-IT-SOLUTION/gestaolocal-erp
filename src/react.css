@@ -1,0 +1,629 @@
+.react-login{min-height:100vh;background:var(--bg);display:flex;flex-direction:column}.react-login>header{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;background:var(--panel);border-bottom:1px solid var(--line)}.react-login header img,.react-app .mod img{width:42px;height:42px;object-fit:contain;object-position:center}.react-login header .brand-left,.react-app .mod .brand-left{display:flex;align-items:center;gap:10px}.react-login header>span{color:var(--muted)}.react-login .lg-card{width:min(440px,calc(100% - 32px));margin:10vh auto;background:var(--panel);padding:28px;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 32px #10203012}.react-login h1{margin:0;color:var(--title);font-size:28px}.react-login label{display:block;margin:14px 0 4px}.react-login label input{display:block;width:100%;height:38px;margin-top:5px;padding:0 10px;border:1px solid var(--line);background:var(--field);border-radius:4px}.react-login .roles{display:grid;gap:10px;margin-top:20px}.react-login .role{text-align:left;border:1px solid var(--line);background:var(--panel);padding:14px;border-radius:6px}.react-login .role:hover{border-color:var(--accent);background:var(--bg)}.react-login .role b,.react-login .role small{display:block}.react-login .role small{color:var(--muted);margin-top:3px}.react-login .actions{margin-top:20px;justify-content:flex-end}.react-app .mod h1{font-size:22px;font-weight:400;color:var(--title)}.react-app .mod h1 span{color:var(--muted);font-size:17px}.react-app main{overflow:auto}.form-actions{display:flex;justify-content:flex-end;gap:8px;padding:12px 18px;border-top:1px solid var(--line)}.card{background:var(--panel);border:1px solid var(--line);padding:16px;margin-bottom:14px}.seg{display:flex;gap:4px}.seg button{border:1px solid var(--line);background:var(--bg);padding:7px 14px}.seg button.on{background:var(--accent);color:var(--accent-ink)}.chk{text-align:center}.chk input{accent-color:var(--accent)}@media(max-width:760px){.react-app .who{display:none}.react-app .mod .ctx{display:none}.react-login .lg-card{margin-top:8vh}.shell nav.side{width:180px}table{font-size:13px}}
+#root{height:100%}.doc-filterbar{display:flex;gap:8px;flex-wrap:wrap;padding:10px;border-bottom:1px solid var(--line)}.doc-filterbar input,.doc-filterbar select{height:34px;min-width:130px;padding:0 8px;border:1px solid var(--line);border-radius:3px;background:var(--field)}.file-action{display:inline-block;color:var(--title);cursor:pointer;margin-right:6px}.file-action input{display:none}
+.react-app .shell{position:relative}.react-app .shell nav.side{position:fixed;z-index:20;top:58px;bottom:0;left:0;width:64px;overflow-x:hidden;transition:width .2s ease;box-shadow:2px 0 8px #10203012}.react-app .shell nav.side:hover,.react-app .shell nav.side:focus-within{width:220px}.react-app .menu-trigger{display:flex;flex-direction:column;justify-content:center;gap:4px;width:40px;height:40px;min-height:40px;flex-shrink:0;margin:6px auto 10px;padding:0;border:1px solid var(--line);border-radius:5px;background:var(--panel);color:var(--title)}.react-app .menu-trigger span{display:block;width:18px;height:2px;margin:auto;background:currentColor;border-radius:2px}.react-app .side h3{white-space:nowrap;overflow:hidden}.react-app .side .utility-heading{margin-top:18px}.react-app .side .item{display:flex;align-items:center;gap:12px;min-height:40px;padding-left:19px;white-space:nowrap}.react-app .side .nav-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;min-width:26px;height:22px;color:var(--title)}.react-app .sidebar-icon{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.react-app .side .item.on .sidebar-icon{stroke-width:2.2}.react-app .side .nav-label{opacity:0;transition:opacity .15s ease}.react-app .side:hover .nav-label,.react-app .side:focus-within .nav-label{opacity:1}.react-app .side .foot{overflow:hidden;white-space:nowrap}.react-app .side .foot button{display:flex;align-items:center;gap:12px;width:100%;padding-left:19px}.react-app .shell>main{margin-left:64px;width:calc(100% - 64px)}@media(max-width:760px){.react-app .shell nav.side{position:fixed;top:58px;width:220px;transform:translateX(-156px);transition:transform .2s ease}.react-app .shell nav.side .menu-trigger{margin-left:168px;margin-right:12px}.react-app .shell nav.side:hover,.react-app .shell nav.side:focus-within{transform:translateX(0)}.react-app .side .nav-label{opacity:1}.react-app .shell>main{margin-left:64px;width:calc(100% - 64px)}}
+
+/* Ajustes responsivos da aplicação React */
+.react-app,
+.react-app .shell,
+.react-app main{min-width:0}
+.react-app{overflow:hidden}
+.react-app .tabbar{min-width:0}
+.react-app .tabs{min-width:0}
+.react-app .mod .brand-left{min-width:0}
+.react-app .mod h1{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.react-app .screen-head h2{min-width:0}
+.react-app .fgrid>*{min-width:0}
+.react-app .fgrid input,
+.react-app .fgrid select{max-width:100%}
+.react-app .tbl-wrap{min-width:0}
+.react-app .doc-filterbar input,
+.react-app .doc-filterbar select{flex:1 1 150px;min-width:0}
+.react-app .permission-table{overscroll-behavior-x:contain}
+
+@media (max-width: 860px){
+  .react-app .tabbar{min-height:48px}
+  .react-app .tabbar .home{width:42px}
+  .react-app .tab{padding-left:12px;padding-right:8px;margin-top:4px}
+  .react-app .tabbar .util{padding:0 4px}
+  .react-app .tabbar .util button{width:34px;min-width:34px}
+  .react-app .tabbar .util button:last-child{font-size:0}
+  .react-app .tabbar .util button:last-child::before{content:"⇥";font-size:18px}
+  .react-app .mod{padding:8px 12px;gap:8px}
+  .react-app .mod img{width:36px;height:36px}
+  .react-app .mod h1{font-size:19px}
+  .react-app .mod h1 span{font-size:14px}
+  .react-app .shell nav.side{top:58px}
+  .react-app main{padding:14px 12px 28px}
+  .react-app .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;padding:16px 14px 20px}
+  .react-app .w2,
+  .react-app .w3{grid-column:span 2}
+  .react-app .form-actions{position:sticky;bottom:0;background:var(--panel);z-index:2}
+  .react-app .doc-filterbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .react-app .doc-filterbar input,
+  .react-app .doc-filterbar select,
+  .react-app .doc-filterbar .btn{width:100%;min-width:0}
+  .react-app .doc-filterbar .btn{grid-column:span 2}
+  .react-app .toolbar input[type=search]{max-width:none;min-width:0;width:100%}
+  .react-app .toolbar .count{margin-left:0;width:100%}
+  .react-app .screen-head{align-items:flex-start}
+  .react-app .screen-head .actions{margin-left:auto}
+}
+
+@media (min-width: 761px) and (max-width: 860px){
+  .react-app .shell nav.side{width:64px;transform:none}
+  .react-app .shell nav.side .menu-trigger{margin-left:auto;margin-right:auto}
+}
+
+@media (max-width: 640px){
+  .react-login>header{padding:12px 16px}
+  .react-login header img{width:36px;height:36px}
+  .react-login header>span{font-size:12px}
+  .react-login .lg-card{margin:6vh 16px;padding:20px 16px;width:auto}
+  .react-login h1{font-size:24px}
+  .react-login .actions{flex-direction:column-reverse}
+  .react-login .actions .btn{width:100%;min-height:42px}
+  .react-app .tabbar .home{width:38px}
+  .react-app .tab{font-size:13px}
+  .react-app .mod .brand-left{width:100%}
+  .react-app .mod .ctx{display:none}
+  .react-app .shell nav.side{width:220px;transform:translateX(-168px);top:58px}
+  .react-app .shell nav.side .menu-trigger{margin-left:180px}
+  .react-app .shell>main{margin-left:52px;width:calc(100% - 52px)}
+  .react-app main{padding:12px 8px 24px}
+  .react-app .screen-head{gap:8px;margin-bottom:10px}
+  .react-app .screen-head h2{font-size:19px;line-height:1.25}
+  .react-app .screen-head .actions{width:100%;margin-left:0}
+  .react-app .screen-head .actions .btn{width:100%}
+  .react-app .fgrid{grid-template-columns:minmax(0,1fr);padding:14px 12px 18px}
+  .react-app .w2,
+  .react-app .w3{grid-column:span 1}
+  .react-app .form-actions{flex-direction:column-reverse;padding:10px 12px}
+  .react-app .form-actions .btn{width:100%;min-height:40px}
+  .react-app .doc-filterbar{grid-template-columns:minmax(0,1fr);padding:8px}
+  .react-app .doc-filterbar .btn{grid-column:auto}
+  .react-app .tbl-list thead{display:none}
+  .react-app .tbl-list,
+  .react-app .tbl-list tbody,
+  .react-app .tbl-list tr,
+  .react-app .tbl-list td{display:block;width:100%}
+  .react-app .tbl-list tr{padding:8px 0;border-bottom:8px solid var(--bg)}
+  .react-app .tbl-list td{display:flex;justify-content:space-between;gap:12px;padding:6px 10px;white-space:normal;text-align:right;border-bottom:0;overflow-wrap:anywhere}
+  .react-app .tbl-list td::before{content:attr(data-l);flex:0 1 auto;color:var(--muted);text-align:left}
+  .react-app .tbl-list td.num{font-variant-numeric:tabular-nums}
+  .react-app .tbl-list td.act{justify-content:flex-end;flex-wrap:wrap;padding-top:10px}
+  .react-app .tbl-list td.act::before{content:none}
+  .react-app .tbl-list td.act button{min-height:38px;padding:7px 10px}
+  .react-app .tbl-list td.empty{display:block;text-align:center}
+  .react-app .tbl-list td.empty::before{content:none}
+  .react-app .seg{display:flex;width:100%}
+  .react-app .seg button{flex:1;min-height:40px;padding:8px 6px}
+  .react-app .card{padding:12px}
+  .react-app .permission-table table{min-width:620px}
+}
+
+@media (max-width: 380px){
+  .react-app .tabbar .util button:first-of-type{display:none}
+  .react-app .mod h1{font-size:17px}
+  .react-app .mod h1 span{font-size:12px}
+  .react-login header>span{display:none}
+}
+
+/* ---------- acessibilidade e usabilidade 2026 ---------- */
+.sr-only{
+  position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important;
+}
+.skip-link{
+  position:fixed;z-index:1000;top:8px;left:8px;transform:translateY(-180%);
+  background:var(--bar);color:var(--bar-ink);padding:10px 14px;border-radius:5px;font-weight:700;
+  text-decoration:none;box-shadow:0 3px 12px #0003;
+}
+.skip-link:focus{transform:none}
+.screen-help{margin:2px 0 0;color:var(--muted);font-size:13px}
+.screen-head>div:first-child{min-width:0}
+.form-field{margin-bottom:14px}
+.form-field label,.filter-field label{display:block;font-weight:600;margin-bottom:5px}
+.form-field input,.filter-field input,.filter-field select{min-height:40px}
+.pwrow{align-items:stretch}
+.pwrow .field-hint{display:block;flex-basis:100%;font-size:12px;color:var(--muted);margin-top:3px}
+.lg-card .access-note{margin:18px 0 0;color:var(--muted);font-size:12.5px}
+.lg-err,.form-error{border-radius:5px}
+.form-error{margin:0 18px 12px;padding:10px 12px;background:var(--bad-bg);color:var(--danger);font-weight:600}
+.table-scroll{overflow-x:auto}
+.action-heading{min-width:170px}
+.action-text{margin-left:4px}
+.muted-action{color:var(--muted);font-size:12px}
+.link-btn{border:0;background:none;color:var(--title);text-decoration:underline;padding:6px;cursor:pointer}
+.search-box{display:flex;align-items:center;gap:8px;flex:1;max-width:560px}
+.search-box span{font-weight:600;white-space:nowrap}
+.search-box input{flex:1}
+.doc-filterbar{align-items:end}
+.filter-field{min-width:150px;flex:1}
+.filter-field input,.filter-field select{width:100%}
+.permission-note{padding:10px 12px;color:var(--muted);background:var(--bg);border-bottom:1px solid var(--line);font-size:13px}
+.permission-table th[scope="row"]{font-weight:600;color:var(--ink)}
+.permission-table input[type="checkbox"]{width:20px;height:20px;cursor:pointer;accent-color:var(--accent)}
+.user-context{font-weight:600}
+.react-app main:focus{outline:none}
+@media (max-width:760px){
+  .react-app .shell nav.side{
+    transform:translateX(-100%);
+    width:260px;
+    box-shadow:4px 0 18px #0003;
+  }
+  .react-app .shell nav.side.open{transform:translateX(0)}
+  .react-app .shell nav.side .menu-trigger{margin:6px 12px 10px auto}
+  .react-app .shell nav.side:hover{width:260px}
+  .react-app .shell nav.side .nav-label{opacity:1}
+  .react-app .shell>main{margin-left:0;width:100%}
+  .react-app .mod{padding-left:52px}
+  .react-app .mod .ctx{width:100%;margin-left:0}
+  .react-app .mod .ctx span{padding-left:8px;padding-right:8px}
+  .react-app .screen-head .actions{width:100%}
+  .react-app .screen-head .actions .btn{width:100%;min-height:42px}
+  .react-app .fgrid{grid-template-columns:1fr}
+  .react-app .w2,.react-app .w3{grid-column:span 1}
+  .react-app .doc-filterbar{grid-template-columns:1fr}
+  .react-app .doc-filterbar .btn{grid-column:span 1}
+  .react-app .search-box{max-width:none;width:100%;align-items:stretch;flex-direction:column}
+  .react-app .search-box span{width:100%}
+  .react-app .toolbar{align-items:stretch}
+  .react-app .toolbar .count{text-align:left}
+  .react-app .tbl-list thead{display:none}
+  .react-app .tbl-list,.react-app .tbl-list tbody,.react-app .tbl-list tr,.react-app .tbl-list td{display:block;width:100%}
+  .react-app .tbl-list tr{padding:12px;border-bottom:1px solid var(--line)}
+  .react-app .tbl-list td{display:grid;grid-template-columns:minmax(105px,40%) 1fr;gap:10px;padding:5px 0;border:0;white-space:normal;text-align:left}
+  .react-app .tbl-list td::before{content:attr(data-l);font-weight:700;color:var(--muted)}
+  .react-app .tbl-list td.act{display:flex;justify-content:flex-start;flex-wrap:wrap;gap:8px;padding-top:10px}
+  .react-app .tbl-list td.act::before{width:100%}
+  .react-app .tbl-list td.empty{display:block;text-align:center}
+  .react-app .tbl-list td.empty::before{content:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:0.001ms!important;animation-duration:0.001ms!important;animation-iteration-count:1!important}
+}
+@media (forced-colors:active){
+  .btn.primary,.seg button.on{forced-color-adjust:none}
+  :focus-visible{outline:3px solid CanvasText}
+}
+
+/* ================================================================
+   ERP 2026 · navegação, cabeçalho e acesso
+   ================================================================ */
+.react-app .mod{
+  min-height:64px;
+  padding:10px 18px;
+  gap:16px;
+  box-shadow:0 1px 0 rgba(16,29,45,.02);
+}
+.react-app .mod .brand-left{gap:11px;min-width:0}
+.react-app .mod .brand-left img{width:38px;height:38px}
+.react-app .mod .brand-left h1{font-size:20px;font-weight:600;letter-spacing:0;color:var(--ink)}
+.react-app .mod .brand-left h1 span{font-size:15px;font-weight:400;color:var(--muted)}
+.react-app .mod .ctx{justify-self:center;align-items:center;font-size:12.5px}
+.react-app .mod .ctx span{padding:2px 12px}
+
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;min-width:0}
+.user-chip{display:flex;align-items:center;gap:9px;min-width:0;padding:4px 8px 4px 5px;border:1px solid var(--line);background:var(--bg);border-radius:999px}
+.user-avatar{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-size:13px;font-weight:700;flex:none}
+.user-chip-text{display:flex;flex-direction:column;min-width:0;line-height:1.1}
+.user-chip-text strong{font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:135px}
+.user-chip-text small{font-size:11px;color:var(--muted);white-space:nowrap}
+.header-icon-btn,.header-logout{height:38px;border:1px solid var(--line);background:var(--panel);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:8px}
+.header-icon-btn{width:38px;padding:0}
+.header-logout{padding:0 12px;color:var(--danger);font-weight:600}
+.header-icon-btn:hover,.header-logout:hover{background:var(--bg);border-color:var(--accent)}
+.header-icon-btn .sidebar-icon,.header-logout .sidebar-icon{width:18px;height:18px}
+
+/* Navegação: fixa quando pinada, flutuante quando desafixada. */
+.react-app .shell nav.side{
+  position:fixed;
+  z-index:40;
+  top:64px;
+  bottom:0;
+  left:0;
+  width:248px;
+  height:auto;
+  padding:10px 8px 12px;
+  overflow-x:hidden;
+  overflow-y:auto;
+  background:color-mix(in srgb,var(--panel) 96%,transparent);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-right:1px solid var(--line);
+  box-shadow:4px 0 22px rgba(16,29,45,.06);
+  transition:width .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.react-app .shell nav.side.floating{width:72px}
+.react-app .shell nav.side.floating:hover,
+.react-app .shell nav.side.floating:focus-within{width:248px;box-shadow:10px 0 28px rgba(16,29,45,.12)}
+.react-app .shell nav.side .side-tools{height:42px;display:flex;align-items:center;gap:6px;margin:0 2px 8px}
+.react-app .shell nav.side .menu-trigger{margin:0;width:38px;height:38px;border-radius:8px;background:var(--bg);border-color:var(--line)}
+.react-app .shell nav.side .pin-trigger{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--muted);opacity:0;transition:opacity .15s,background .15s,color .15s}
+.react-app .shell nav.side:hover .pin-trigger,
+.react-app .shell nav.side:focus-within .pin-trigger,
+.react-app .shell nav.side.pinned .pin-trigger{opacity:1}
+.react-app .shell nav.side .pin-trigger.on{color:var(--accent);background:var(--bg)}
+.react-app .shell nav.side .pin-trigger .sidebar-icon{width:18px;height:18px}
+.react-app .shell nav.side.floating .side-tools{justify-content:center}
+.react-app .shell nav.side.floating .pin-trigger{display:none}
+.react-app .shell nav.side.floating:hover .pin-trigger,
+.react-app .shell nav.side.floating:focus-within .pin-trigger{display:grid}
+.react-app .shell nav.side.floating:hover .side-tools,
+.react-app .shell nav.side.floating:focus-within .side-tools{justify-content:flex-start}
+.react-app .side-navigation{min-width:232px}
+.react-app .side h3{margin:17px 8px 5px;padding:0 8px;font-size:10.5px;line-height:1.2;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;white-space:nowrap;overflow:hidden}
+.react-app .side h3:first-child{margin-top:5px}
+.react-app .side .item{display:flex!important;align-items:center;gap:12px;width:100%;height:42px;min-height:42px;padding:0 10px!important;margin:2px 0;border:0!important;border-left:3px solid transparent!important;border-radius:9px;background:transparent;text-align:left;white-space:nowrap;color:var(--ink)}
+.react-app .side .item:hover{background:var(--bg)}
+.react-app .side .item.on{background:color-mix(in srgb,var(--accent) 10%,var(--panel));border-left-color:var(--accent)!important;color:var(--title);font-weight:650}
+.react-app .side .nav-icon{width:30px;min-width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:var(--muted)}
+.react-app .side .item.on .nav-icon{background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent)}
+.react-app .side .sidebar-icon{width:19px;height:19px;stroke-width:1.85}
+.react-app .side .nav-label{opacity:1;overflow:hidden;text-overflow:ellipsis;transition:opacity .12s ease}
+.react-app .side.floating:not(:hover):not(:focus-within) h3,
+.react-app .side.floating:not(:hover):not(:focus-within) .nav-label{opacity:0;width:0}
+.react-app .side.floating:not(:hover):not(:focus-within) .side-navigation{min-width:56px}
+.react-app .side.floating:not(:hover):not(:focus-within) .item{justify-content:center;padding:0!important}
+.react-app .side.floating:not(:hover):not(:focus-within) .nav-icon{margin:0}
+.react-app .side-hint{margin:auto 7px 0;padding:7px 8px;color:var(--muted);font-size:10px;text-align:center;border-top:1px solid var(--line);white-space:nowrap;overflow:hidden}
+.react-app .side.floating:not(:hover):not(:focus-within) .side-hint{font-size:0}
+.react-app .shell>main{margin-left:248px;width:calc(100% - 248px);transition:margin-left .18s ease,width .18s ease}
+.react-app .shell:has(nav.side.floating)>main{margin-left:72px;width:calc(100% - 72px)}
+
+/* Login mais limpo e consistente com o ERP */
+.react-login{min-height:100vh;background:radial-gradient(circle at 50% -10%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 38%),var(--bg)}
+.react-login .login-header{min-height:68px;padding:12px 24px;background:var(--panel);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.react-login .login-header .brand-left{gap:11px}
+.react-login .login-header img{width:40px;height:40px}
+.react-login .login-header .brand-left>div{display:flex;flex-direction:column;line-height:1.05}
+.react-login .login-header .brand-left strong{font-size:19px;color:var(--ink)}
+.react-login .login-header .brand-left small{font-size:11px;color:var(--muted);margin-top:4px}
+.react-login .login-header-actions{display:flex;align-items:center;gap:12px}
+.react-login .login-company{font-size:12px;color:var(--muted)}
+.react-login .lg-card{width:min(460px,calc(100% - 32px));margin:7vh auto;padding:30px;border-radius:14px;box-shadow:0 18px 50px rgba(16,29,45,.09);border-color:color-mix(in srgb,var(--line) 80%,var(--accent))}
+.react-login h1{font-size:27px;font-weight:650;letter-spacing:-.02em}
+.react-login .sub{color:var(--muted);margin-top:6px}
+.react-login .roles{gap:12px;margin-top:22px}
+.react-login .role{min-height:76px;padding:14px 16px;border-radius:10px;transition:transform .15s,border-color .15s,background .15s;box-shadow:0 2px 8px rgba(16,29,45,.03)}
+.react-login .role:hover{transform:translateY(-1px);border-color:var(--accent);background:var(--bg)}
+.react-login .role b{font-size:15px;color:var(--ink)}
+.react-login .role small{font-size:12.5px}
+.react-login .form-field label{font-weight:650}
+.react-login .form-field input{height:44px;border-radius:8px}
+.react-login .pwrow{display:flex;gap:8px}
+.react-login .pwrow input{height:44px}
+.react-login .pwrow .btn{height:44px;border-radius:8px}
+.react-login .actions{gap:10px}
+.react-login .actions .btn{min-height:42px;border-radius:8px}
+.react-login .access-note{padding-top:12px;border-top:1px solid var(--line)}
+
+@media(max-width:900px){
+  .react-app .mod{grid-template-columns:minmax(0,1fr) auto;min-height:60px;padding:8px 12px}
+  .react-app .mod .ctx{display:none}
+  .react-app .mod .brand-left h1{font-size:18px}
+  .react-app .mod .brand-left h1 span{font-size:13px}
+  .user-chip-text{display:none}
+  .user-chip{padding:4px}
+  .header-logout span{display:none}
+  .header-logout{width:38px;padding:0}
+  .react-app .shell nav.side{top:60px}
+  .react-app .shell nav.side.pinned{width:248px}
+  .react-app .shell nav.side.floating{width:72px}
+  .react-app .shell>main{margin-left:72px;width:calc(100% - 72px)}
+  .react-app .shell:has(nav.side.pinned)>main{margin-left:72px;width:calc(100% - 72px)}
+}
+@media(max-width:760px){
+  .react-login .login-header{padding:11px 14px}
+  .react-login .login-company{display:none}
+  .react-login .lg-card{margin:5vh 16px;padding:22px 18px}
+  .react-app .mod{min-height:58px}
+  .react-app .shell nav.side{top:58px;width:270px;transform:translateX(-100%);box-shadow:8px 0 30px rgba(16,29,45,.16)}
+  .react-app .shell nav.side.open{transform:translateX(0)}
+  .react-app .shell nav.side.floating{width:270px;transform:translateX(-100%)}
+  .react-app .shell nav.side.floating.open{transform:translateX(0)}
+  .react-app .shell nav.side.floating .side-tools,
+  .react-app .shell nav.side.pinned .side-tools{justify-content:flex-end}
+  .react-app .shell nav.side .pin-trigger{display:grid!important;opacity:1}
+  .react-app .shell nav.side .nav-label{opacity:1;width:auto}
+  .react-app .shell nav.side h3{opacity:1;width:auto}
+  .react-app .shell nav.side .item{justify-content:flex-start;padding:0 10px!important}
+  .react-app .shell>main,.react-app .shell:has(nav.side.pinned)>main,.react-app .shell:has(nav.side.floating)>main{margin-left:0;width:100%}
+  .react-app .mod{padding-left:10px}
+  .react-app .screen-head{margin-bottom:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .react-app .shell nav.side,.react-app .shell>main,.react-login .role{transition:none}
+}
+
+/* ================================================================
+   Refinamento visual · Dashboard + navegação + acesso
+   ================================================================ */
+.react-app .side .sidebar-icon,
+.react-app .header-actions .sidebar-icon,
+.react-login .header-icon-btn .sidebar-icon {
+  width:18px !important;
+  height:18px !important;
+  max-width:18px;
+  max-height:18px;
+  flex:0 0 18px;
+}
+.react-app .side .nav-icon {
+  width:30px !important;
+  min-width:30px !important;
+  height:30px !important;
+}
+.react-app .side .item {
+  height:40px !important;
+  min-height:40px !important;
+  gap:10px !important;
+  font-size:13px;
+}
+.react-app .side h3 { margin-top:14px !important; margin-bottom:4px !important; }
+.react-app .side-tools { flex-shrink:0; }
+.react-app .shell nav.side.pinned { width:236px; }
+.react-app .shell nav.side.floating { width:64px; }
+.react-app .shell nav.side.floating:hover,
+.react-app .shell nav.side.floating:focus-within { width:236px; }
+.react-app .shell>main { margin-left:236px; width:calc(100% - 236px); }
+.react-app .shell:has(nav.side.floating)>main { margin-left:64px; width:calc(100% - 64px); }
+.react-app .side-navigation { min-width:220px; }
+.react-app .side .nav-label { line-height:1.2; }
+
+/* Dashboard: recupera os resumos sem transformar a tela em um painel carregado. */
+.dashboard { max-width:1440px; margin:0 auto; }
+.dashboard-head { margin-bottom:14px !important; }
+.dashboard-kpis { margin-bottom:16px; }
+.dashboard-kpis .kpi { min-height:104px; padding:16px 18px; }
+.dashboard-kpis .kpi-label { display:block; color:var(--muted); font-size:12px; margin-bottom:6px; }
+.dashboard-kpis .kpi strong { display:block; font-size:23px; line-height:1.15; }
+.dashboard-kpis .kpi small { display:block; color:var(--muted); margin-top:7px; font-size:11.5px; }
+.dashboard-grid { display:grid; grid-template-columns:1.35fr 1fr 1fr; gap:14px; margin-bottom:14px; }
+.dashboard-bottom { display:grid; grid-template-columns:1.5fr 1fr; gap:14px; }
+.dash-card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px; min-width:0; }
+.dash-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:14px; }
+.dash-card-head h3 { margin:0; font-size:14px; color:var(--ink); }
+.dash-card-head p { margin:4px 0 0; font-size:11.5px; color:var(--muted); }
+.dash-icon { width:30px; height:30px; flex:0 0 30px; display:grid; place-items:center; border-radius:8px; background:var(--bg); color:var(--accent); }
+.dash-icon.warning { color:var(--warning,#b7791f); }
+.dash-icon .sidebar-icon { width:17px !important; height:17px !important; }
+.finance-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.finance-summary > div,.metric-list > div { padding:10px; background:var(--bg); border-radius:7px; min-width:0; }
+.finance-summary span,.metric-list span { display:block; color:var(--muted); font-size:10.5px; margin-bottom:5px; }
+.finance-summary strong { font-size:14px; white-space:nowrap; }
+.finance-balance { display:flex; justify-content:space-between; align-items:center; gap:12px; border-top:1px solid var(--line); margin-top:12px; padding-top:12px; font-size:12px; }
+.finance-balance strong { font-size:15px; }
+.attention-list { list-style:none; padding:0; margin:0; }
+.attention-list li { display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); font-size:12px; }
+.attention-list li:last-child { border-bottom:0; }
+.attention-list strong { min-width:24px; text-align:right; }
+.text-warning { color:var(--warning,#b7791f); }
+.text-ok { color:var(--success,#21865b); }
+.metric-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.metric-list strong { font-size:17px; }
+.stock-list { border-top:1px solid var(--line); }
+.stock-row { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:10px 0; border-bottom:1px solid var(--line); }
+.stock-row:last-child { border-bottom:0; }
+.stock-row strong,.stock-row small { display:block; }
+.stock-row strong { font-size:12.5px; }
+.stock-row small { margin-top:3px; color:var(--muted); font-size:10.5px; }
+.stock-row > span { flex:none; padding:5px 8px; border-radius:6px; background:var(--bg); font-size:11px; font-weight:700; }
+.empty-state { padding:14px 0 2px; color:var(--muted); font-size:12px; display:flex; align-items:center; gap:8px; }
+.status-dot { width:7px; height:7px; border-radius:50%; background:var(--muted); }
+.status-dot.ok { background:var(--success,#21865b); }
+.indicator-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.indicator-grid div { padding:11px; border:1px solid var(--line); border-radius:7px; }
+.indicator-grid strong { display:block; font-size:18px; }
+.indicator-grid span { display:block; margin-top:3px; color:var(--muted); font-size:10.5px; }
+
+/* Login: composição equilibrada e sem colisões de texto. */
+.react-login .lg-card { width:min(430px,calc(100% - 32px)); margin:clamp(32px,7vh,72px) auto; padding:28px 30px; }
+.react-login .lg-card h1 { line-height:1.2; }
+.react-login .sub { line-height:1.5; max-width:38ch; }
+.react-login .roles { margin-top:20px; }
+.react-login .role { min-height:78px; display:flex; flex-direction:column; justify-content:center; gap:5px; overflow:hidden; }
+.react-login .role b { line-height:1.25; white-space:normal; overflow-wrap:anywhere; }
+.react-login .role small { line-height:1.35; white-space:normal; overflow-wrap:anywhere; }
+.react-login .form-field { margin-bottom:16px; }
+.react-login .form-field label { display:block; margin:0 0 6px; line-height:1.25; }
+.react-login .form-field input { width:100%; box-sizing:border-box; }
+.react-login .pwrow { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; }
+.react-login .pwrow input { min-width:0; }
+.react-login .pwrow .btn { min-width:84px; }
+.react-login .actions { display:grid; grid-template-columns:1fr 1fr; margin-top:22px; }
+.react-login .actions .btn { width:100%; }
+.react-login .access-note { line-height:1.45; }
+
+@media(max-width:900px){
+  .react-app .shell nav.side.pinned { width:220px; }
+  .react-app .shell nav.side.floating { width:64px; }
+  .react-app .shell nav.side.floating:hover,.react-app .shell nav.side.floating:focus-within { width:220px; }
+  .react-app .shell>main { margin-left:64px; width:calc(100% - 64px); }
+  .react-app .shell:has(nav.side.pinned)>main { margin-left:64px; width:calc(100% - 64px); }
+  .dashboard-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .dashboard-bottom { grid-template-columns:1fr; }
+}
+@media(max-width:760px){
+  .react-app .shell nav.side.pinned,
+  .react-app .shell nav.side.floating { width:260px; }
+  .react-app .shell nav.side.floating { transform:translateX(-100%); }
+  .react-app .shell nav.side.floating.open,
+  .react-app .shell nav.side.pinned.open { transform:translateX(0); }
+  .react-app .shell nav.side.floating:hover,
+  .react-app .shell nav.side.floating:focus-within { width:260px; }
+  .react-app .shell>main,
+  .react-app .shell:has(nav.side.floating)>main,
+  .react-app .shell:has(nav.side.pinned)>main { margin-left:0; width:100%; }
+  .dashboard-grid { grid-template-columns:1fr; }
+  .dashboard-kpis { grid-template-columns:1fr 1fr; }
+  .dashboard-kpis .kpi { min-height:96px; }
+  .finance-summary { grid-template-columns:1fr; }
+  .react-login .lg-card { width:min(430px,calc(100% - 28px)); padding:24px 20px; margin:28px auto; }
+  .react-login .actions { grid-template-columns:1fr; }
+}
+@media(max-width:460px){
+  .dashboard-kpis { grid-template-columns:1fr; }
+  .metric-list,.indicator-grid { grid-template-columns:1fr 1fr; }
+  .react-login .pwrow { grid-template-columns:1fr; }
+  .react-login .pwrow .btn { width:100%; }
+}
+
+/* Login 2026 — layout final: clean, aligned and responsive. */
+.react-login{
+  position:relative;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:42px 16px;
+  background:
+    radial-gradient(circle at 50% -10%, color-mix(in srgb,var(--accent) 8%,transparent), transparent 38%),
+    #f7fafc;
+}
+.react-login .login-theme{
+  position:fixed;
+  top:18px;
+  right:18px;
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:color-mix(in srgb,var(--panel) 94%,transparent);
+  color:var(--muted);
+  box-shadow:0 5px 18px rgba(16,29,45,.06);
+  z-index:5;
+}
+.react-login .login-theme:hover{color:var(--accent);border-color:var(--accent)}
+.react-login .login-theme .sidebar-icon{width:19px;height:19px}
+.react-login .lg-card{
+  width:min(440px,100%);
+  margin:0;
+  padding:32px 30px 28px;
+  background:var(--panel);
+  border:1px solid color-mix(in srgb,var(--line) 85%,var(--accent));
+  border-radius:14px;
+  box-shadow:0 18px 50px rgba(16,29,45,.08);
+}
+.react-login .login-heading{margin:0}
+.react-login h1{
+  margin:0;
+  color:var(--title);
+  font-size:27px;
+  line-height:1.2;
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+.react-login .sub{
+  margin:8px 0 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+.react-login .roles{
+  display:grid;
+  gap:12px;
+  margin-top:22px;
+}
+.react-login .role{
+  width:100%;
+  min-height:96px;
+  display:grid;
+  grid-template-columns:56px minmax(0,1fr) 24px;
+  align-items:center;
+  gap:14px;
+  padding:14px 15px;
+  text-align:left;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--panel);
+  color:var(--ink);
+  box-shadow:0 2px 8px rgba(16,29,45,.025);
+  transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease,background .16s ease;
+}
+.react-login .role:hover,
+.react-login .role:focus-visible{
+  transform:translateY(-1px);
+  border-color:color-mix(in srgb,var(--accent) 65%,var(--line));
+  background:color-mix(in srgb,var(--accent) 3%,var(--panel));
+  box-shadow:0 8px 22px rgba(16,29,45,.07);
+}
+.react-login .role-icon{
+  width:56px;
+  height:56px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:color-mix(in srgb,var(--accent) 11%,var(--panel));
+  color:var(--accent);
+}
+.react-login .role-icon .sidebar-icon{width:27px;height:27px;stroke-width:1.9}
+.react-login .role-copy{min-width:0;display:flex;flex-direction:column;gap:4px}
+.react-login .role-copy b{font-size:15px;line-height:1.25;color:var(--ink)}
+.react-login .role-copy small{font-size:12.5px;line-height:1.35;color:var(--muted);white-space:normal;overflow-wrap:anywhere}
+.react-login .role-arrow{display:grid;place-items:center;color:var(--muted)}
+.react-login .role-arrow .sidebar-icon{width:20px;height:20px;stroke-width:2}
+.react-login .form-field{margin:22px 0 0}
+.react-login .form-field + .form-field{margin-top:20px}
+.react-login .form-field label{display:block;margin:0 0 7px;color:var(--ink);font-size:14px;font-weight:700;line-height:1.25}
+.react-login .form-field input{
+  width:100%;
+  height:44px;
+  padding:0 12px;
+  border:1px solid #cbd6de;
+  border-radius:8px;
+  background:var(--field);
+  color:var(--ink);
+  outline:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+.react-login .form-field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 13%,transparent)}
+.react-login .pwrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:stretch}
+.react-login .pwrow input{min-width:0}
+.react-login .password-toggle{
+  min-width:104px;
+  height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border-radius:8px;
+}
+.react-login .password-toggle .sidebar-icon{width:18px;height:18px}
+.react-login .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.react-login .actions .btn{width:100%;min-height:44px;border-radius:8px}
+.react-login .actions .btn.primary{background:#2388c2;border-color:#2388c2}
+.react-login .actions .btn.primary:hover{background:#1977ad;border-color:#1977ad}
+.react-login .access-note{
+  margin:18px 0 0;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+}
+.react-login .access-note strong{font-weight:700}
+.react-login .lg-err{margin-top:12px}
+
+@media (max-width:640px){
+  .react-login{padding:28px 14px}
+  .react-login .login-theme{top:12px;right:12px;width:36px;height:36px}
+  .react-login .lg-card{width:min(440px,100%);padding:26px 20px 22px;border-radius:13px}
+  .react-login h1{font-size:24px}
+  .react-login .role{grid-template-columns:48px minmax(0,1fr) 20px;min-height:82px;padding:12px}
+  .react-login .role-icon{width:48px;height:48px}
+  .react-login .role-icon .sidebar-icon{width:24px;height:24px}
+  .react-login .role-copy b{font-size:14px}
+  .react-login .role-copy small{font-size:12px}
+}
+@media (max-width:460px){
+  .react-login .pwrow{grid-template-columns:minmax(0,1fr) auto}
+  .react-login .password-toggle{min-width:48px;width:48px;padding:0;font-size:0}
+  .react-login .password-toggle .sidebar-icon{width:19px;height:19px}
+}
+@media (max-width:360px){
+  .react-login{padding:22px 10px}
+  .react-login .lg-card{padding:23px 16px 20px}
+  .react-login .role{grid-template-columns:44px minmax(0,1fr) 18px;gap:10px}
+  .react-login .role-icon{width:44px;height:44px}
+}

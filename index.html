@@ -8,55 +8,11 @@
 <title>GestãoLocal ERP · R&amp;M IT Solutions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Lexend:wght@300;600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="assets/rm-logo.svg">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="splash" aria-hidden="true">
-  <img src="assets/rm-logo.svg" alt="">
-  <div class="sp-name">R&amp;M</div>
-  <div class="sp-sub">IT Solutions</div>
-  <div class="sp-line"></div>
-</div>
-<div id="login" hidden>
-  <div class="lg-top">
-    <div class="brand-left"><span class="logo-chip"><img src="assets/rm-logo.svg" alt="R&amp;M"></span><strong>GestãoLocal</strong></div>
-    <div class="brand-mid" aria-label="R&amp;M IT Solutions"><span class="bm-r">R&amp;M</span><span class="bm-s">IT Solutions</span></div>
-    <button class="tbtn" data-act="theme" aria-label="Alternar tema claro e escuro" title="Tema">◐</button>
-  </div>
-  <div class="lg-body" id="lgbody"></div>
-</div>
-<div id="app" hidden>
-  <div class="tabbar">
-    <button class="home" data-act="home" aria-label="Ir para a tela inicial">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
-    </button>
-    <div class="tabs" id="tabs" role="tablist"></div>
-    <div class="util"><span class="who" id="whoBtn"></span><button data-act="theme" aria-label="Alternar tema claro e escuro" title="Tema">◐</button><button class="out" data-act="logout">Sair</button></div>
-  </div>
-  <div class="mod">
-    <div class="brand-left">
-      <button class="menu-btn" data-act="menu" aria-label="Abrir menu">☰</button>
-      <span class="logo-chip"><img src="assets/rm-logo.svg" alt="R&amp;M"></span>
-      <h1 id="modTitle"></h1>
-    </div>
-    <div class="brand-mid" aria-label="R&amp;M IT Solutions"><span class="bm-r">R&amp;M</span><span class="bm-s">IT Solutions</span></div>
-    <div class="ctx"><span>Soluções de T.I. LTDA | Todos os Direitos Reservados</span><span id="today"></span><span> V.1.0</span></div>
-  </div>
-  <div class="shell">
-    <nav class="side" id="side"></nav>
-    <main id="main"></main>
-  </div>
-</div>
-<div id="idle-screen" aria-hidden="true">
-  <div class="idle-inner">
-    <img src="assets/rm-logo.svg" alt="R&amp;M">
-    <strong>R&amp;M IT Solutions</strong>
-    <span>Toque, clique ou pressione uma tecla para continuar</span>
-  </div>
-</div>
-<div id="toast" role="status" aria-live="polite"></div>
-
-<script src="js/app.js"></script>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
